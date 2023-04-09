@@ -27,4 +27,4 @@ router.post("/:id/like", asyncHandler(likePost));
 
 router.post("/:id/unlike", asyncHandler(unlikePost));
 
-module.export = router;
+module.exports = router;

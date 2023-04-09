@@ -12,6 +12,7 @@ const postSchema = new mongoose.Schema(
       required: true,
       maxlength: 300,
     },
+    like_data:{  type: mongoose.Schema.Types.ObjectId, ref: "User",},
     likes: {
       type: Number,
       min: 0,

@@ -58,9 +58,10 @@ async function deletePostById(req, res) {
 }
 async function likePost(req, res) {
   try {
+    const userId = req.body.userId;
     const post = await Post.findByIdAndUpdate(
       req.params.id,
-      { $inc: { likes: 1 } },
+      { $inc: { likes: 1 }, $addToSet: { like_data: userId } },
       { new: true }
     );
     if (!post) return res.status(404).send("Post not found");
@@ -84,7 +85,6 @@ async function unlikePost(req, res) {
     res.status(500).send("Server Error");
   }
 }
-
 
 module.exports = {
   createPost,

@@ -4,6 +4,7 @@ const {
   getUserById,
   updateUserById,
   deleteUserById,
+  findUserByEmail,
 } = require("../controller/userController");
 
 const router = express.Router();
@@ -22,5 +23,6 @@ router.put("/:id", asyncHandler(updateUserById));
 
 router.delete("/:id", asyncHandler(deleteUserById));
 
+router.post("/login", asyncHandler(findUserByEmail));
 
-module.export = router;
+module.exports = router;

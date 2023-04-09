@@ -67,10 +67,24 @@ async function deleteUserById(req, res) {
   }
 }
 
+async function findUserByEmail(req, res) {
+  const { email } = req.body;
+  try {
+    const user = await User.findOne({ email });
+    if (!user) {
+      res.send({error: "Email not found" });
+    } else {
+      res.status(404).send({ success: true, user });
+    }
+  } catch (err) {
+    res.status(500).send({ error: "Server Error" });
+  }
+}
 
 module.exports = {
   createUser,
   getUserById,
   updateUserById,
   deleteUserById,
+  findUserByEmail,
 };

@@ -22,4 +22,4 @@ router.get("/posts", asyncHandler(getTotalPosts));
 
 router.get("/posts/top-liked", asyncHandler(getTopLikedPosts));
 
-module.export = router;
+module.exports = router;
