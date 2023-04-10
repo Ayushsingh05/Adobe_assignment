@@ -31,7 +31,7 @@ export const SinglePost = (props) => {
     })
     }
     const deletePost = async () =>{
-      await axios.delete(`http://localhost:8080/posts/${_id}`).then((res)=>{
+      await axios.delete(`https://adobe-assignment-liard.vercel.app/posts/${_id}`).then((res)=>{
         navigate('/')
       }).catch((e)=>{
         console.log(e);

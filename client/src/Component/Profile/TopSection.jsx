@@ -35,7 +35,7 @@ export const TopSection = (props) => {
     })
   }
   const deleteProfile = async () =>{
-    await axios.delete(`http://localhost:8080/users/${id}`).then((res)=>{
+    await axios.delete(`https://adobe-assignment-liard.vercel.app/users/${id}`).then((res)=>{
       
       navigate('/')
       setLoggedIn(undefined)
