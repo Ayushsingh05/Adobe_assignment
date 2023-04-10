@@ -16,7 +16,7 @@ export const AllRoutes = () => {
                 <Route exact path='/analytics' element={<Analytics/>} />
                 <Route exact path='/post' element={<CreatePost/>} />
                 <Route exact path="/login" element={<Login />} />
-                <Route exact path='/profile' element={<Profile/>} />
+                <Route exact path='/profile/:id' element={<Profile/>} />
             </Routes>
         </>
     )

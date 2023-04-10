@@ -39,15 +39,12 @@ async function getUserById(req, res) {
 
 async function updateUserById(req, res) {
   try {
-    const { value, error } = await userSchema.validateAsync(req.body, {
-      stripUnknown: true,
-    });
-    if (error) {
-      return res.status(400).send({ error: error.details[0].message });
-    }
-    const user = await User.findByIdAndUpdate(req.params.id, value, {
-      new: true,
-    });
+    const {name,bio}= req.body;
+    const user = await User.findByIdAndUpdate(
+      req.params.id,
+      { name: name, bio: bio },
+      { new: true }
+    )
     if (!user) {
       return res.status(404).send({ error: "User not found" });
     }
@@ -59,13 +56,16 @@ async function updateUserById(req, res) {
 }
 async function deleteUserById(req, res) {
   try {
-    const user = await User.findByIdAndDelete(req.params.id);
+    const user = await User.findById(req.params.id)
+
     if (!user) {
-      return res.status(404).send({ error: "User not found" });
+     res.status(404).send('User not found');
     }
-    return res.status(200).send();
+    await Post.deleteMany({ user_id: user._id });
+    await User.deleteOne({ _id: user._id });
+   res.send('User and their posts deleted successfully');
   } catch (error) {
-    return res.status(500).send({ error: "Internal server error" });
+    console.error(error.message);
   }
 }
 

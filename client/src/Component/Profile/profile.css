@@ -1,0 +1,40 @@
+.profilePage{
+    width: 80%;;
+    margin: auto;
+    margin-top: 110px;
+}
+.topsection{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 15px;
+    border-bottom: 1px solid black;
+}
+.top_image img{
+    width: 100px;
+    border-radius: 50%;
+}
+.topsection>div:last-child{
+    margin-left: 50px;
+}
+.bottomsection{
+    /* border: 1px solid teal; */
+    display: grid;
+    gap: 15px;
+    grid-template-columns: repeat(3,1fr);
+}
+.singleBottom{
+ width: 90%;
+ margin: auto;
+ height: 200px;
+ /* overflow: hidden; */
+}
+.singleBottom img{
+height: 100%;
+}
+.singleBottom>div{
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    
+}
