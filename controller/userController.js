@@ -1,5 +1,6 @@
-const Joi = require("joi");
+
 const User = require("../models/userModel");
+const Post = require("../models/postModel");
 
 async function createUser(req, res) {
   try {
@@ -25,10 +26,11 @@ async function createUser(req, res) {
 async function getUserById(req, res) {
   try {
     const user = await User.findById(req.params.id);
+    const posts = await Post.find({ user_id:req.params.id })
     if (!user) {
       return res.status(404).send({ error: "User not found" });
     }
-    return res.status(200).send(user);
+    return res.status(200).send({user, posts});
   } catch (error) {
     console.error(error);
     return res.status(500).send({ error: "Internal server error" });

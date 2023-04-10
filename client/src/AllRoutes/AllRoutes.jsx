@@ -5,6 +5,7 @@ import { Login } from '../Pages/Login'
 import Navbar from './../Component/Navbar/Navbar';
 import { Analytics } from '../Pages/Analytics';
 import { CreatePost } from '../Pages/CreatePost';
+import { Profile } from '../Pages/Profile';
 
 export const AllRoutes = () => {
     return (
@@ -15,6 +16,7 @@ export const AllRoutes = () => {
                 <Route exact path='/analytics' element={<Analytics/>} />
                 <Route exact path='/post' element={<CreatePost/>} />
                 <Route exact path="/login" element={<Login />} />
+                <Route exact path='/profile' element={<Profile/>} />
             </Routes>
         </>
     )

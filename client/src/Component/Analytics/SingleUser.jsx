@@ -1,16 +1,15 @@
 import React from 'react'
 
-export const SingleUser = () => {
+export const SingleUser = (props) => {
+    console.log(props);
+    const {name, postCount} = props;
     return (
         <div>
             <div className="user-name">
-                Ayush
+                {name}
             </div>
             <div className="user-post-count">
-                Bio
-            </div>
-            <div className="user-email">
-                example@email.com
+              Post Count :-  {postCount}
             </div>
             <div className="user-edit">
                 View

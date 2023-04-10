@@ -55,7 +55,7 @@ export const AllUsers = () => {
                         List of Top  Active users
                     </h4>
                     <div className="user-list">
-                        {activeUsers && activeUsers.length>0  ? activeUsers.map(el => <SingleUser/> )  : null} 
+                        {activeUsers && activeUsers.length>0  ? activeUsers.map(el => <SingleUser {...el} /> )  : null} 
                     </div>
                 </div>
             </div>

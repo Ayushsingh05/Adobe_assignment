@@ -60,7 +60,7 @@ function Navbar() {
                         {loggedIn ?<li className="nav-item">
                             <NavLink
                                 exact
-                                to="/login"
+                                to="/profile"
                                 activeClassName="active"
                                 className="nav-links"
                                 onClick={handleClick}
