@@ -2,7 +2,6 @@ const express = require("express");
 const {
   getTotalUsers,
   getTotalPosts,
-  getTopLikedPosts,
   getTopActiveUsers,
 } = require("../controller/analyticsController");
 
@@ -20,6 +19,5 @@ router.get("/users/top-active", asyncHandler(getTopActiveUsers));
 
 router.get("/posts", asyncHandler(getTotalPosts));
 
-router.get("/posts/top-liked", asyncHandler(getTopLikedPosts));
 
 module.exports = router;

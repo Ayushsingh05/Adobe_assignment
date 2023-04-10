@@ -1,25 +1,22 @@
-const Joi = require("joi");
 const Post = require("../models/postModel");
 
-const postSchema = Joi.object({
-  user_id: Joi.string()
-    .pattern(/^[0-9a-fA-F]{24}$/)
-    .required(),
-  content: Joi.string().max(300).required(),
-  likes: Joi.number().integer().min(0).default(0),
-});
+async function getPosts(req, res) {
+  try {
+    const posts = await Post.find().populate("user_id");
+    res.status(201).json(posts);
+  } catch {
+    res.status(400).send("Server Error");
+  }
+}
 
 async function createPost(req, res) {
   try {
-    const { user_id, content, likes } = await postSchema.validateAsync(
-      req.body
-    );
-    const post = new Post({ user_id, content, likes });
+    const { user_id, content, heading, image } = req.body;
+    const post = new Post({ user_id, content, heading, image });
     await post.save();
     res.status(201).json(post);
   } catch (err) {
-    console.error(err);
-    res.status(400).send("Bad Request");
+    res.status(400).send("Server Error");
   }
 }
 async function getPostById(req, res) {
@@ -71,11 +68,17 @@ async function likePost(req, res) {
     res.status(500).send("Server Error");
   }
 }
+
 async function unlikePost(req, res) {
+  const userId = req.body.userId;
   try {
     const post = await Post.findByIdAndUpdate(
       req.params.id,
-      { $inc: { likes: -1 }, $max: { likes: 0 } },
+      {
+        $pull: { like_data: userId},
+        $inc: { likes: -1 },
+        
+      },
       { new: true }
     );
     if (!post) return res.status(404).send("Post not found");
@@ -93,4 +96,5 @@ module.exports = {
   deletePostById,
   likePost,
   unlikePost,
+  getPosts,
 };

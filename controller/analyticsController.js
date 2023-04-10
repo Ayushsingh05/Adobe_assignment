@@ -45,7 +45,7 @@ async function getTotalPosts(req, res) {
 
 async function getTopLikedPosts(req, res) {
   try {
-    const posts = await Post.find().sort({ likes: -1 }).limit(5);
+    const posts = await Post.find().populate('user_id').sort({ likes: -1 }).limit(5);
     res.status(200).json(posts);
   } catch (err) {
     console.error(err);

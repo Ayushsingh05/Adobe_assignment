@@ -1,8 +1,10 @@
 import React from 'react'
-import Sidebar from '../Component/Dashboard/Sidebar'
-
+import '../Component/Dashboard/dashboard.css'
+import { Posts } from '../Component/Dashboard/Posts'
 export const Dashboard = () => {
   return (
-    <div><Sidebar/></div>
+    <div className='dashboard'>
+      <Posts/>
+      </div>
   )
 }

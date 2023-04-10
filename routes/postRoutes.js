@@ -6,7 +6,9 @@ const {
   deletePostById,
   likePost,
   unlikePost,
+  getPosts,
 } = require("../controller/postController");
+const { getTopLikedPosts } = require("../controller/analyticsController");
 const router = express.Router();
 
 function asyncHandler(fn) {
@@ -17,6 +19,8 @@ function asyncHandler(fn) {
 
 router.post("/", asyncHandler(createPost));
 
+router.get("/", asyncHandler(getPosts));
+
 router.get("/:id", asyncHandler(getPostById));
 
 router.put("/:id", asyncHandler(updatePostById));
@@ -25,6 +29,8 @@ router.delete("/:id", asyncHandler(deletePostById));
 
 router.post("/:id/like", asyncHandler(likePost));
 
-router.post("/:id/unlike", asyncHandler(unlikePost));
+router.post("/:id/unlike", asyncHandler(unlikePost)); 
+
+router.get("/analytics/top-liked", asyncHandler(getTopLikedPosts));
 
 module.exports = router;

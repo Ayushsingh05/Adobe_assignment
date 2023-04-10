@@ -12,6 +12,11 @@ const userSchema = new mongoose.Schema(
       required: true,
       unique: true,
     },
+    profile_pic: {
+      type: "String",
+      required: true,
+      default:"https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg",
+    },
     bio: {
       type: String,
       maxlength: 200,

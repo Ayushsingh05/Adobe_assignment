@@ -7,12 +7,24 @@ const postSchema = new mongoose.Schema(
       ref: "User",
       required: true,
     },
+    heading:{
+      type: String,
+      required: true,
+      maxlength: 80,
+    },
+    image:{
+      type: String,
+      required: true,
+    },
     content: {
       type: String,
       required: true,
       maxlength: 300,
     },
-    like_data:{  type: mongoose.Schema.Types.ObjectId, ref: "User",},
+    like_data:[{ 
+      type: mongoose.Schema.Types.ObjectId, 
+      ref: "User",
+   }],
     likes: {
       type: Number,
       min: 0,
