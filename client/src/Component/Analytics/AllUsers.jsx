@@ -9,7 +9,7 @@ export const AllUsers = () => {
     const [posts, setPosts] = useState();
     const getPosts = async () => {
         try {
-            const data = await axios.get('http://localhost:8080/posts/analytics/top-liked');
+            const data = await axios.get('https://adobe-assignment-liard.vercel.app/posts/analytics/top-liked');
             setPosts(data.data);
         } catch (e) {
             console.log(e)
@@ -17,7 +17,7 @@ export const AllUsers = () => {
     }
     const getTotalUsersCount =async ()=>{
         try {
-            const data = await axios.get('http://localhost:8080/analytics/users');
+            const data = await axios.get('https://adobe-assignment-liard.vercel.app/analytics/users');
             setTotalUser(data.data);
         } catch (e) {
             console.log(e)
@@ -26,7 +26,7 @@ export const AllUsers = () => {
     
    const getTopActiveUsers = async ()=>{
     try {
-        const data = await axios.get('http://localhost:8080/analytics/users/top-active');
+        const data = await axios.get('https://adobe-assignment-liard.vercel.app/analytics/users/top-active');
         setaciveUsers(data.data);
     } catch (e) {
         console.log(e)

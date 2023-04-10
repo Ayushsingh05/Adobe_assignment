@@ -16,7 +16,7 @@ export const SinglePost = (props) => {
     const [like,setlike]= useState(likes);
     const likePost = async () =>{
         if(loggedIn){
-            await axios.post(`http://localhost:8080/posts/${_id}/like`,{userId:loggedIn._id}).then((res)=>{
+            await axios.post(`https://adobe-assignment-liard.vercel.app/posts/${_id}/like`,{userId:loggedIn._id}).then((res)=>{
                 setLikeArray(res.data.like_data);
                 setlike(like+1)
                 checklike();
@@ -35,7 +35,7 @@ export const SinglePost = (props) => {
     }
     const unlikePost = async ()=>{
         if(loggedIn){
-            await axios.post(`http://localhost:8080/posts/${_id}/unlike`,{userId:loggedIn._id}).then((res)=>{
+            await axios.post(`https://adobe-assignment-liard.vercel.app/posts/${_id}/unlike`,{userId:loggedIn._id}).then((res)=>{
                 setLikeArray(res.data.like_data);
                 setlike(like-1)
                 checklike();

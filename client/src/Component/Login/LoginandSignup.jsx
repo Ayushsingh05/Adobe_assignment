@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useToast } from '@chakra-ui/react';
 import { Link, useNavigate } from 'react-router-dom';
 import { appContext } from '../../Context/AppContext';
-//  http://localhost:8080/login (post)
+//  https://adobe-assignment-liard.vercel.app/login (post)
 const LoginandSignup = () => {
 
   const toast = useToast();
@@ -41,7 +41,7 @@ const LoginandSignup = () => {
 
   const handleSignupSubmit = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:8080/users', signupForm)
+    axios.post('https://adobe-assignment-liard.vercel.app/users', signupForm)
       .then((response) => {
         setSignupForm({ name: "", email: "", bio: "" });
         toast({
@@ -73,7 +73,7 @@ const LoginandSignup = () => {
 
   const handleLoginSubmit = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:8080/users/login', loginform)
+    axios.post('https://adobe-assignment-liard.vercel.app/users/login', loginform)
       .then((response) => {
         setLoggedIn(response.data.user);
         setLoginForm({ email: "" });
